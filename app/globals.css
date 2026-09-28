@@ -253,6 +253,19 @@ html.lenis body {
   animation: fade-up 1.2s var(--ease-out-expo) both;
   animation-delay: var(--delay, 600ms);
 }
+.hero-clip {
+  animation: unveil 1.6s var(--ease-in-out-quart) both;
+  animation-delay: var(--delay, 500ms);
+}
+}
+
+@keyframes unveil {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 /* ==========================================================================
@@ -293,22 +306,21 @@ html.reveal-ready [data-reveal='lines']:not(.is-in) .line > span {
   transform: translate3d(0, 105%, 0);
 }
 
-/* Images unveil from the bottom edge while settling in scale */
+/* Images unveil from the bottom edge while settling in scale. The clip sits
+   on the child: an element clipped to nothing never reports an intersection. */
 html.reveal-ready [data-reveal='clip']:not(.is-in) {
   opacity: 1;
   transform: none;
-  clip-path: inset(100% 0 0 0);
 }
-html.reveal-ready [data-reveal='clip'] {
+html.reveal-ready [data-reveal='clip'] > * {
   clip-path: inset(0 0 0 0);
-  transition: clip-path 1.4s var(--ease-in-out-quart);
+  transition:
+    clip-path 1.4s var(--ease-in-out-quart),
+    transform 1.8s var(--ease-out-expo);
   transition-delay: var(--delay, 0ms);
 }
-html.reveal-ready [data-reveal='clip'] img {
-  transition: transform 1.8s var(--ease-out-expo);
-  transition-delay: var(--delay, 0ms);
-}
-html.reveal-ready [data-reveal='clip']:not(.is-in) img {
+html.reveal-ready [data-reveal='clip']:not(.is-in) > * {
+  clip-path: inset(100% 0 0 0);
   transform: scale(1.12);
 }
 
@@ -352,7 +364,7 @@ html.reveal-ready [data-reveal='clip']:not(.is-in) img {
   }
   html.reveal-ready [data-reveal]:not(.is-in),
   html.reveal-ready [data-reveal] .line > span,
-  html.reveal-ready [data-reveal] img {
+  html.reveal-ready [data-reveal='clip'] > * {
     opacity: 1 !important;
     transform: none !important;
     clip-path: none !important;

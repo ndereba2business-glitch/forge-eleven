@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FloatingShapes from '@/components/ui/FloatingShapes'
@@ -205,7 +206,7 @@ export default function Hero() {
             Bespoke digital experiences for brands that refuse to be ordinary.
           </p>
 
-          <a
+          <Link
             href="/work"
             style={{
               display: 'inline-flex',
@@ -220,7 +221,7 @@ export default function Hero() {
           >
             <span>View Work</span>
             <span style={{ display: 'block', width: '64px', height: '1px', background: 'currentColor' }} />
-          </a>
+          </Link>
         </div>
       </div>
 
