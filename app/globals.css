@@ -106,7 +106,7 @@ html.lenis body {
    TYPE SCALE (fluid)
    ========================================================================== */
 @utility t-display {
-  font-size: clamp(3.1rem, 0.9rem + 8.6vw, 10.75rem);
+  font-size: clamp(2.5rem, 0.2rem + 9.2vw, 10.75rem);
   line-height: 0.9;
   letter-spacing: -0.055em;
   font-weight: 500;

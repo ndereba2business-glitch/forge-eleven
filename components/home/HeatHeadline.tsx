@@ -60,7 +60,7 @@ export default function HeatHeadline({ lines }: { lines: React.ReactNode[] }) {
   }, [])
 
   return (
-    <h1 ref={heading} className="t-display relative mt-8 max-w-[12ch] sm:max-w-none">
+    <h1 ref={heading} className="t-display relative mt-8">
       <span className="sr-only">Forge Eleven. </span>
       <Lines lines={lines} hero />
       <span ref={heat} aria-hidden="true" className="heat heat-sweep">
