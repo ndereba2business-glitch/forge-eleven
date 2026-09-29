@@ -29,9 +29,10 @@ export async function generateMetadata({ params }: PageProps<'/work/[slug]'>): P
       url,
       title: `${project.seo.title} — Forge Eleven`,
       description: project.seo.description,
-      images: [{ url: project.cover.image.src, width: project.cover.image.width, height: project.cover.image.height, alt: project.cover.alt }],
+      // JPEG, not the WebP cover: WhatsApp and other link previewers handle it reliably.
+      images: [{ url: `/og/${project.slug}.jpg`, width: 1200, height: 630, alt: project.cover.alt }],
     },
-    twitter: { card: 'summary_large_image', images: [project.cover.image.src] },
+    twitter: { card: 'summary_large_image', images: [`/og/${project.slug}.jpg`] },
   }
 }
 
