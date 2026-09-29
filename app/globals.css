@@ -3,8 +3,8 @@
 /* ==========================================================================
    FORGE ELEVEN — DESIGN TOKENS
    Near-black, warm bone text, one ember accent used sparingly.
-   Contrast on --color-ink: bone 16.5:1 · mute 7.3:1 · ember 6.3:1 · faint 3.7:1
-   (faint is for decorative/large text only).
+   Contrast on --color-ink: bone 16.5:1 · mute 7.3:1 · ember 6.3:1 · faint 4.9:1
+   (faint: tertiary labels only).
    ========================================================================== */
 @theme {
   --color-ink: #0b0b0a;
@@ -12,7 +12,7 @@
   --color-ink-3: #1b1a18;
   --color-bone: #ece8e0;
   --color-mute: #a39e94;
-  --color-faint: #6f6a62;
+  --color-faint: #857f76;
   --color-line: rgb(236 232 224 / 0.1);
   --color-line-strong: rgb(236 232 224 / 0.22);
   --color-ember: #ff5b24;

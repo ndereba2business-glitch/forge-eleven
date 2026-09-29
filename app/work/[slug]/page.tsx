@@ -107,7 +107,10 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
               <dt className="t-meta text-mute">Year</dt>
               <dd className="mt-2">{project.year}</dd>
             </div>
-            <p className="col-span-2 border-t border-line pt-5 text-mute">{project.status.note}</p>
+            <div className="col-span-2 border-t border-line pt-5">
+              <dt className="sr-only">About this project</dt>
+              <dd className="text-mute">{project.status.note}</dd>
+            </div>
           </dl>
         </div>
 

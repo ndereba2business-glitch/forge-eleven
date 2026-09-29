@@ -55,10 +55,23 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-x overflow-clip" aria-hidden="true">
-        <p className="-mb-[0.2em] text-[clamp(3.5rem,17.2vw,21rem)] leading-none font-medium tracking-[-0.065em] whitespace-nowrap text-ink-3 select-none">
-          Forge Eleven<span className="text-ember">.</span>
-        </p>
+      {/* Brand wordmark as SVG so it spans the container exactly; the descender is cropped on purpose. */}
+      <div className="container-x" aria-hidden="true">
+        <svg viewBox="0 0 1000 150" className="block w-full select-none">
+          <text
+            x="0"
+            y="140"
+            textLength="1000"
+            lengthAdjust="spacing"
+            fontSize="186"
+            fontWeight="500"
+            letterSpacing="-11"
+            fill="var(--color-ink-3)"
+            style={{ fontFamily: 'var(--font-geist)' }}
+          >
+            Forge Eleven<tspan fill="var(--color-ember)">.</tspan>
+          </text>
+        </svg>
       </div>
 
       <div className="container-x flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 t-meta text-mute">

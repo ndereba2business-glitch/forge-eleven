@@ -111,14 +111,14 @@ export default function CaseStudyBlocks({ blocks }: { blocks: Block[] }) {
 
           case 'decision':
             return (
-              <aside key={i} className="container-x">
+              <div key={i} className="container-x">
                 <div className="grid gap-6 border-y border-line py-12 md:grid-cols-12 md:py-16" data-reveal>
                   <p className="t-meta text-ember md:col-span-3">{block.label}</p>
                   <p className="text-[clamp(1.35rem,1rem+1.3vw,2.1rem)] leading-[1.3] tracking-[-0.02em] md:col-span-8 md:col-start-5">
                     {block.text}
                   </p>
                 </div>
-              </aside>
+              </div>
             )
 
           case 'list':
