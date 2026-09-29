@@ -70,6 +70,8 @@ export interface Project {
   cover: Shot
   /** A quieter secondary frame used in listings. */
   thumb: Shot
+  /** First screen on a phone, for mobile showcases. */
+  mobile: Shot
   /** Subtle per-project tint for small details only. */
   tint: string
   blocks: Block[]
@@ -105,6 +107,7 @@ export const projects: Project[] = [
     ],
     cover: { image: fcCover, alt: 'Farmers Connect home page: “Farming is better when we’re connected.”' },
     thumb: { image: fcSupplierDashboard, alt: 'Farmers Connect supplier dashboard with product and contact counts' },
+    mobile: { image: fcLandingMobile, alt: 'Farmers Connect on a phone', device: 'phone' },
     tint: '#22c55e',
     blocks: [
       {
@@ -211,6 +214,7 @@ export const projects: Project[] = [
     ],
     cover: { image: ahCover, alt: 'Arena Homes hero: “A better place to come home to.” over a warmly lit living room' },
     thumb: { image: ahRoom, alt: 'Arena Homes studio room page with gallery and monthly price' },
+    mobile: { image: ahMobile, alt: 'Arena Homes on a phone', device: 'phone' },
     tint: '#c8784f',
     blocks: [
       {
@@ -304,6 +308,7 @@ export const projects: Project[] = [
     ],
     cover: { image: llCover, alt: 'Lion Legacy hero: “Build your legacy.” with an athlete and supplement tubs' },
     thumb: { image: llProduct, alt: 'Lion Legacy product page for whey protein with Add to cart and Order on WhatsApp' },
+    mobile: { image: llMobile, alt: 'Lion Legacy Fitness on a phone', device: 'phone' },
     tint: '#d4a24c',
     blocks: [
       {
@@ -396,6 +401,7 @@ export const projects: Project[] = [
     ],
     cover: { image: bpCover, alt: 'The Black Perch hero: woven pendant lights over a candlelit dining room' },
     thumb: { image: bpMenu, alt: 'The Black Perch featured menu with category filters' },
+    mobile: { image: bpMobile, alt: 'The Black Perch on a phone', device: 'phone' },
     tint: '#c9a96e',
     blocks: [
       {

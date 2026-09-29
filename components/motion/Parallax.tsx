@@ -43,7 +43,7 @@ export default function Parallax({
 
   return (
     <div ref={frame} className={`relative overflow-clip ${className}`}>
-      <div data-parallax className="h-full w-full will-change-transform">
+      <div data-parallax className="relative h-full w-full will-change-transform">
         {children}
       </div>
     </div>

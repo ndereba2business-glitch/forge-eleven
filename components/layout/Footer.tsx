@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Arrow from '@/components/ui/Arrow'
 import { contact, site, socials, whatsappLink } from '@/lib/site'
 import { NAV } from '@/lib/nav'
+import FooterCta from '@/components/layout/FooterCta'
 
 export default function Footer() {
   const wa = whatsappLink()
@@ -9,10 +10,7 @@ export default function Footer() {
     <footer className="relative overflow-clip border-t border-line">
       <div className="container-x grid gap-12 pt-16 pb-10 md:grid-cols-12 md:pt-24">
         <div className="md:col-span-5">
-          <p className="t-h3 max-w-[16ch]">Have something worth building?</p>
-          <Link href="/#contact" className="btn btn-primary mt-8">
-            Start a project <Arrow />
-          </Link>
+          <FooterCta />
         </div>
 
         <nav aria-label="Footer" className="md:col-span-3 md:col-start-7">
@@ -57,8 +55,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-x" aria-hidden="true">
-        <p className="-mb-[0.18em] text-[clamp(3.5rem,17.2vw,21rem)] leading-none font-medium tracking-[-0.065em] whitespace-nowrap text-ink-3 select-none">
+      <div className="container-x overflow-clip" aria-hidden="true">
+        <p className="-mb-[0.2em] text-[clamp(3.5rem,17.2vw,21rem)] leading-none font-medium tracking-[-0.065em] whitespace-nowrap text-ink-3 select-none">
           Forge Eleven<span className="text-ember">.</span>
         </p>
       </div>
