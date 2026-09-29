@@ -102,7 +102,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-wrap items-center gap-6">
-        <button type="submit" disabled={status === 'sending'} className="btn btn-primary disabled:opacity-60">
+        <button type="submit" disabled={status === 'sending'} className="btn btn-primary disabled:opacity-60" data-magnetic>
           {status === 'sending' ? 'Sending…' : 'Send enquiry'} <Arrow />
         </button>
         <p role="status" aria-live="polite" className="text-sm text-mute">

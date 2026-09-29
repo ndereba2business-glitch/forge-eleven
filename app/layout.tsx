@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import SmoothScroll from '@/components/layout/SmoothScroll'
 import RevealObserver from '@/components/motion/RevealObserver'
+import Cursor from '@/components/ui/Cursor'
 import { site } from '@/lib/site'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' })
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <SmoothScroll />
         <RevealObserver />
+        <Cursor />
         <Header />
         <main id="main">{children}</main>
         <Footer />

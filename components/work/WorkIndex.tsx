@@ -56,6 +56,7 @@ export default function WorkIndex({ items }: { items: IndexItem[] }) {
           <li key={item.slug} data-reveal style={{ '--delay': `${i * 70}ms` } as React.CSSProperties}>
             <Link
               href={`/work/${item.slug}`}
+              data-cursor-label="Open"
               onPointerEnter={() => setActive(i)}
               onFocus={() => setActive(null)}
               className="group grid grid-cols-[2.25rem_1fr_auto] items-baseline gap-x-3 gap-y-4 border-t border-line py-8 transition-colors duration-500 md:grid-cols-12 md:gap-x-6 md:py-10"

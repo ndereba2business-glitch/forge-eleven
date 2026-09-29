@@ -100,7 +100,7 @@ export default function Reel({ items }: { items: ReelItem[] }) {
               </p>
               <p className="t-h2 mt-3">{current.name}</p>
             </div>
-            <Link href={`/work/${current.slug}`} className="btn btn-primary shrink-0">
+            <Link href={`/work/${current.slug}`} className="btn btn-primary shrink-0" data-magnetic>
               View case study <Arrow />
             </Link>
           </div>

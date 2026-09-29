@@ -94,7 +94,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link href="/#contact" className="btn btn-ghost hidden min-h-10! px-4! text-sm! md:inline-flex">
+            <Link href="/#contact" className="btn btn-ghost hidden min-h-10! px-4! text-sm! md:inline-flex" data-magnetic>
               Start a project
             </Link>
             <button

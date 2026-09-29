@@ -33,6 +33,7 @@ export default function SelectedWork() {
                 aria-label={`${project.name} case study`}
                 className={`group block md:col-span-8 ${flip ? 'md:col-start-5 md:row-start-1' : ''}`}
                 tabIndex={-1}
+                data-cursor-label="View"
               >
                 <div data-reveal="clip" className="relative aspect-[16/10] overflow-clip bg-ink-2 outline outline-1 -outline-offset-1 outline-line">
                   <div className="absolute inset-0">

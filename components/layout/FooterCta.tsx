@@ -12,7 +12,7 @@ export default function FooterCta() {
   return (
     <>
       <p className="t-h3 max-w-[16ch]">Have something worth building?</p>
-      <Link href="/#contact" className="btn btn-primary mt-8">
+      <Link href="/#contact" className="btn btn-primary mt-8" data-magnetic>
         Start a project <Arrow />
       </Link>
     </>

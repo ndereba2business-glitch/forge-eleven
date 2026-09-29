@@ -164,6 +164,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
 
       <Link
         href={`/work/${next.slug}`}
+        data-cursor-label="Next"
         className="group relative mt-[clamp(5rem,10vw,9rem)] block overflow-clip border-t border-line"
       >
         <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-35 group-focus-visible:opacity-35" aria-hidden="true">

@@ -26,10 +26,10 @@ export default function Hero() {
         </p>
 
         <div className="hero-fade flex flex-wrap gap-3 md:col-span-6 md:justify-end" style={{ '--delay': '700ms' } as React.CSSProperties}>
-          <Link href="#work" className="btn btn-primary">
+          <Link href="#work" className="btn btn-primary" data-magnetic>
             See the work <Arrow direction="down" />
           </Link>
-          <Link href="#contact" className="btn btn-ghost">
+          <Link href="#contact" className="btn btn-ghost" data-magnetic>
             Start a project
           </Link>
         </div>
