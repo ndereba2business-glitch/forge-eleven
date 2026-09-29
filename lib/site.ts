@@ -23,7 +23,7 @@ export const studio = {
    * The founder's name, shown in the Studio section and structured data.
    * Empty → the section speaks in the studio's voice instead.
    */
-  founder: '',
+  founder: 'Fidelis Ndereba',
   founderRole: 'Founder, designer & developer',
 }
 
@@ -34,7 +34,7 @@ export const contact = {
    * Empty → the WhatsApp button is hidden (a wa.me link with no number
    * can't reach the studio).
    */
-  whatsapp: '',
+  whatsapp: '254745849789',
   whatsappMessage: 'Hi Forge Eleven, I have a project I’d like to talk about.',
 }
 
