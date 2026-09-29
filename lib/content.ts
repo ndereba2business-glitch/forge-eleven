@@ -82,6 +82,21 @@ export const principles = [
   },
 ]
 
+/**
+ * Proof ticker: countable facts from the real projects, each traceable to
+ * the project's source (migrations folder, catalogue, route list, etc.).
+ */
+export const proof = [
+  { figure: '4', text: 'user roles on one database', project: 'Farmers Connect' },
+  { figure: '16', text: 'versioned database migrations', project: 'Farmers Connect' },
+  { figure: '320px', text: 'to 1280px, covered by end-to-end tests', project: 'Farmers Connect' },
+  { figure: '6', text: 'room types, each with its own page', project: 'Arena Homes' },
+  { figure: '10', text: 'routes, each with its own title and link preview', project: 'Arena Homes' },
+  { figure: '22', text: 'products across 7 categories', project: 'Lion Legacy' },
+  { figure: '1', text: 'tap from cart to a WhatsApp order', project: 'Lion Legacy' },
+  { figure: '2', text: 'venues from one hospitality system', project: 'The Black Perch' },
+]
+
 /** Only tools used in the projects on this site. */
 export const tools = [
   'Next.js',

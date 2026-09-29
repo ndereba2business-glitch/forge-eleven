@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Lines from '@/components/motion/Lines'
+import HeatHeadline from '@/components/home/HeatHeadline'
 import Arrow from '@/components/ui/Arrow'
 import { projects } from '@/lib/projects'
 
@@ -14,10 +14,7 @@ export default function Hero() {
         <span>Based in Kenya</span>
       </div>
 
-      <h1 className="t-display mt-8 max-w-[12ch] sm:max-w-none">
-        <span className="sr-only">Forge Eleven. </span>
-        <Lines lines={['Websites and web', 'products, built to', <>move businesses <span className="text-ember">forward.</span></>]} hero />
-      </h1>
+      <HeatHeadline lines={['Websites and web', 'products, built to', <>move businesses <span className="text-ember">forward.</span></>]} />
 
       <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end">
         <p className="hero-fade t-lead max-w-[42ch] text-mute md:col-span-6" style={{ '--delay': '550ms' } as React.CSSProperties}>

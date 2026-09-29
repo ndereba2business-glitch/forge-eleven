@@ -1,6 +1,8 @@
 import Hero from '@/components/home/Hero'
+import ProofTicker from '@/components/home/ProofTicker'
 import Reel from '@/components/home/Reel'
 import SelectedWork from '@/components/home/SelectedWork'
+import Statement from '@/components/home/Statement'
 import Services from '@/components/home/Services'
 import Process from '@/components/home/Process'
 import Studio from '@/components/home/Studio'
@@ -41,8 +43,10 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero />
+      <ProofTicker />
       <Reel items={reel} />
       <SelectedWork />
+      <Statement />
       <Services />
       <Process />
       <Studio />
