@@ -366,55 +366,78 @@ html.has-cursor * {
 }
 
 /* ==========================================================================
-   HEAT HEADLINE — ember glow masked to a moving spot over the hero text.
-   The variables are not inherited: they are only read by .heat itself, and
-   inherited ones would restyle every line of the headline on each frame.
+   HEAT HEADLINE — a circular window of ember text that moves over the hero
+   headline. The window translates one way and the text inside it the other,
+   so the ember copy stays registered with the real headline. Only transform
+   and opacity animate, which keeps the effect on the compositor.
    ========================================================================== */
-@property --hx {
-  syntax: '<length-percentage>';
-  inherits: false;
-  initial-value: -40%;
-}
-@property --hy {
-  syntax: '<length-percentage>';
-  inherits: false;
-  initial-value: 50%;
-}
-@property --hr {
-  syntax: '<length>';
-  inherits: false;
-  initial-value: 0px;
+.heat-host {
+  /* Lets the layers below measure the headline's width in cqw. */
+  container-type: inline-size;
 }
 .heat {
   position: absolute;
   inset: 0;
+  overflow: clip;
   pointer-events: none;
+}
+.heat-window {
+  --r: clamp(6.5rem, 15cqw, 15rem);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--r) * 2);
+  height: calc(var(--r) * 2);
+  /* Centre the window on its own origin, so translate(x, y) places its centre. */
+  margin: calc(var(--r) * -1) 0 0 calc(var(--r) * -1);
+  overflow: hidden;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 0%, rgb(0 0 0 / 0.6) 45%, transparent 100%);
+  mask-image: radial-gradient(circle closest-side, #000 0%, rgb(0 0 0 / 0.6) 45%, transparent 100%);
+  will-change: transform, opacity;
+}
+.heat-inner {
+  position: absolute;
+  top: var(--r);
+  left: var(--r);
+  width: 100cqw;
   color: #ff7a45;
   text-shadow:
     0 0 0.18em rgb(255 91 36 / 0.65),
     0 0 0.6em rgb(255 91 36 / 0.35);
-  -webkit-mask-image: radial-gradient(circle var(--hr) at var(--hx) var(--hy), #000 0%, rgb(0 0 0 / 0.55) 40%, transparent 72%);
-  mask-image: radial-gradient(circle var(--hr) at var(--hx) var(--hy), #000 0%, rgb(0 0 0 / 0.55) 40%, transparent 72%);
+  will-change: transform;
 }
-.heat .text-ember {
+.heat-inner .text-ember {
   color: #ffc7a8;
 }
 .heat-sweep {
   animation: heat-sweep 2.8s var(--ease-in-out-quart) 1.1s both;
 }
+.heat-sweep-inner {
+  animation: heat-sweep-inner 2.8s var(--ease-in-out-quart) 1.1s both;
+}
 @keyframes heat-sweep {
   0% {
-    --hx: -25%;
-    --hy: 15%;
-    --hr: 12rem;
+    transform: translate3d(-12cqw, 3cqw, 0);
+    opacity: 0;
   }
-  70% {
-    --hr: 16rem;
+  14%,
+  78% {
+    opacity: 1;
   }
   100% {
-    --hx: 125%;
-    --hy: 90%;
-    --hr: 0px;
+    transform: translate3d(112cqw, 36cqw, 0);
+    opacity: 0;
+  }
+}
+/* Exactly opposite to the window, so the text inside appears to stay put. */
+@keyframes heat-sweep-inner {
+  0% {
+    transform: translate3d(12cqw, -3cqw, 0);
+  }
+  100% {
+    transform: translate3d(-112cqw, -36cqw, 0);
   }
 }
 @media (prefers-reduced-motion: reduce) {
