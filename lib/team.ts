@@ -6,11 +6,19 @@
  * project to a founder updates the team section automatically.
  */
 
+import type { StaticImageData } from 'next/image'
+
 export type FounderId = 'ndere' | 'eric'
 
 export interface Founder {
   id: FounderId
   name: string
+  /**
+   * Optional portrait. To add one, put the image in assets/team/, import it
+   * at the top of this file and set it here; the team section shows it
+   * automatically. Without it the card is typographic.
+   */
+  photo?: StaticImageData
   /** How the founder is credited on project cards. */
   short: string
   role: string

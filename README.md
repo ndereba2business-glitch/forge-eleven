@@ -78,7 +78,21 @@ The form posts to `app/api/contact/route.ts`, which validates the input and send
 
 Set `RESEND_API_KEY` in the deployment environment (Vercel → Settings → Environment Variables), or in
 `.env.local` for local work. Never commit it. Without the key the form tells visitors to email instead.
-`CONTACT_TO_EMAIL` optionally overrides the address enquiries are sent to.
+
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Required. The Resend API key. |
+| `CONTACT_TO_EMAIL` | Optional. Overrides the address enquiries are sent to. |
+| `RESEND_FROM` | Optional. A sender on a domain verified with Resend, e.g. `Forge Eleven <hello@yourdomain>`. |
+| `CONTACT_CC_EMAIL` | Optional. Addresses to copy on every enquiry, comma-separated. |
+
+Resend's shared sender (`onboarding@resend.dev`) only delivers to the account owner's inbox. To copy
+the second founder, verify a domain with Resend first, then set `RESEND_FROM` and `CONTACT_CC_EMAIL`.
+
+## Founder photos
+
+Put a portrait in `assets/team/`, import it in `lib/team.ts` and set it as that founder's `photo`.
+The team section shows it automatically.
 
 ## Deployment
 

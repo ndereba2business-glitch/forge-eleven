@@ -11,14 +11,15 @@ gsap.registerPlugin(ScrollTrigger)
 
 /**
  * Inertial wheel scrolling, driven by GSAP's ticker so ScrollTrigger and
- * Lenis read the same frame. Touch keeps native scrolling, and visitors who
- * ask for reduced motion get the browser's own scroll.
+ * Lenis read the same frame. Touch devices and visitors who ask for reduced
+ * motion keep the browser's own scroll.
  */
 export default function SmoothScroll() {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // Touch screens already scroll natively with inertia; Lenis would only add per-frame work.
+    if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return
 
     const lenis = new Lenis({ lerp: 0.1, anchors: { offset: -72 }, autoRaf: false })
     const tick = (time: number) => lenis.raf(time * 1000)

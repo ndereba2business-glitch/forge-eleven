@@ -42,6 +42,21 @@ export default function Team() {
               key={founder.id}
               className={`flex flex-col border-b border-line py-10 lg:py-14 ${i === 0 ? 'lg:border-r lg:pr-12' : 'lg:pl-12'}`}
             >
+              {founder.photo && (
+                <div
+                  data-reveal="clip"
+                  className="relative mb-8 aspect-[4/5] w-36 overflow-clip bg-ink-2 outline outline-1 -outline-offset-1 outline-line"
+                >
+                  <Image
+                    src={founder.photo}
+                    alt={`Portrait of ${founder.name}`}
+                    fill
+                    sizes="144px"
+                    placeholder="blur"
+                    className="object-cover grayscale"
+                  />
+                </div>
+              )}
               <p className="t-meta flex gap-3 text-mute" data-reveal>
                 <span className="text-ember">{String(i + 1).padStart(2, '0')}</span>
                 <span>{founder.role}</span>

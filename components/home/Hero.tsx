@@ -23,7 +23,7 @@ export default function Hero() {
       <HeatHeadline lines={['Websites and web', 'products, built to', <>move businesses <span className="text-ember">forward.</span></>]} />
 
       <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-12 md:items-end md:gap-6">
-        <div className="hero-fade md:col-span-6" style={{ '--delay': '550ms' } as React.CSSProperties}>
+        <div className="hero-rise md:col-span-6">
           <p className="t-lead max-w-[42ch] text-mute">
             Forge Eleven is a two-founder studio. We design and build websites, web applications and the systems businesses run
             on, and we ship them.

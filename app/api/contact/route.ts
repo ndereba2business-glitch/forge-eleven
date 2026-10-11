@@ -51,9 +51,18 @@ export async function POST(request: Request) {
     )
     .join('')
 
+  // Resend's shared sender only delivers to the account owner. Once a domain
+  // is verified, set RESEND_FROM to an address on it and CONTACT_CC_EMAIL to
+  // copy the second founder (comma-separated for several).
+  const cc = (process.env.CONTACT_CC_EMAIL || '')
+    .split(',')
+    .map((address) => address.trim())
+    .filter(Boolean)
+
   const { error } = await new Resend(apiKey).emails.send({
-    from: 'Forge Eleven <onboarding@resend.dev>',
+    from: process.env.RESEND_FROM || 'Forge Eleven <onboarding@resend.dev>',
     to: process.env.CONTACT_TO_EMAIL || contact.email,
+    ...(cc.length > 0 && { cc }),
     replyTo: email,
     subject: `New enquiry from ${name}${projectType ? ` — ${projectType}` : ''}`,
     html:

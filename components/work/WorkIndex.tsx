@@ -96,7 +96,7 @@ export default function WorkIndex({ items, categories }: { items: IndexItem[]; c
               <span className="t-meta text-faint md:col-span-1">{item.number}</span>
 
               <div className="relative col-span-3 col-start-1 row-start-2 aspect-[16/9] overflow-clip bg-ink-2 outline outline-1 -outline-offset-1 outline-line [@media(hover:hover)_and_(pointer:fine)]:hidden">
-                <Image src={item.image} alt="" fill sizes="100vw" placeholder="blur" className="object-cover object-top" />
+                <Image src={item.image} alt="" fill sizes="100vw" placeholder="blur" priority={i === 0} className="object-cover object-top" />
               </div>
 
               <span className="t-h3 transition-transform duration-700 ease-(--ease-out-expo) group-hover:translate-x-2 md:col-span-5">

@@ -35,7 +35,7 @@ export default function WorkPage() {
         <h1 className="t-display mt-6">
           <Lines lines={['Our work']} hero />
         </h1>
-        <p className="hero-fade t-lead mt-10 max-w-[46ch] text-mute" style={{ '--delay': '450ms' } as React.CSSProperties}>
+        <p className="hero-rise t-lead mt-10 max-w-[46ch] text-mute">
           Everything here was designed and built by Forge Eleven, and every project is live. The status is stated plainly: what’s
           running for a business, what’s our own product, and what’s a concept.
         </p>

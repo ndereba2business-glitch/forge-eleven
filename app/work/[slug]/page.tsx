@@ -81,7 +81,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
         </h1>
 
         <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12">
-          <p className="hero-fade t-lead max-w-[38ch] text-bone md:col-span-6" style={{ '--delay': '350ms' } as React.CSSProperties}>
+          <p className="hero-rise t-lead max-w-[38ch] text-bone md:col-span-6">
             {project.intro}
           </p>
 
@@ -143,7 +143,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
       <div className="container-x mt-[clamp(4rem,8vw,7rem)]">
         <div
           className="hero-clip relative aspect-[16/9] overflow-clip bg-ink-2 outline outline-1 -outline-offset-1 outline-line"
-          style={{ '--delay': '700ms' } as React.CSSProperties}
+          style={{ '--delay': '300ms' } as React.CSSProperties}
         >
           <Parallax amount={10} className="absolute inset-0">
             <Image

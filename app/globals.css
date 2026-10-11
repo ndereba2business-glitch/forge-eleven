@@ -253,12 +253,23 @@ html.lenis body {
   animation: fade-up 1.2s var(--ease-out-expo) both;
   animation-delay: var(--delay, 600ms);
 }
+/* Slide only, no fade: for the largest text block, so it counts as painted
+   on the first frame (an element at opacity 0 delays Largest Contentful Paint). */
+.hero-rise {
+  animation: slide-up 1.2s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
 .hero-clip {
   animation: unveil 1.6s var(--ease-in-out-quart) both;
   animation-delay: var(--delay, 500ms);
 }
 }
 
+@keyframes slide-up {
+  from {
+    transform: translate3d(0, 1rem, 0);
+  }
+}
 @keyframes unveil {
   from {
     clip-path: inset(100% 0 0 0);
@@ -355,21 +366,23 @@ html.has-cursor * {
 }
 
 /* ==========================================================================
-   HEAT HEADLINE — ember glow masked to a moving spot over the hero text
+   HEAT HEADLINE — ember glow masked to a moving spot over the hero text.
+   The variables are not inherited: they are only read by .heat itself, and
+   inherited ones would restyle every line of the headline on each frame.
    ========================================================================== */
 @property --hx {
   syntax: '<length-percentage>';
-  inherits: true;
+  inherits: false;
   initial-value: -40%;
 }
 @property --hy {
   syntax: '<length-percentage>';
-  inherits: true;
+  inherits: false;
   initial-value: 50%;
 }
 @property --hr {
   syntax: '<length>';
-  inherits: true;
+  inherits: false;
   initial-value: 0px;
 }
 .heat {
