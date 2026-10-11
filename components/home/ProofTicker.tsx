@@ -1,15 +1,22 @@
 import { proof } from '@/lib/content'
+import { getProject, studioFacts } from '@/lib/projects'
 import Mark from '@/components/ui/Mark'
+
+// Lead with a fact computed from the project list, then the per-project ones.
+const facts = [
+  { figure: String(studioFacts.live), text: `live projects across ${studioFacts.sectors} industries`, source: 'Forge Eleven' },
+  ...proof.map((p) => ({ figure: p.figure, text: p.text, source: getProject(p.project)?.name ?? '' })),
+]
 
 function Row({ hidden = false }: { hidden?: boolean }) {
   return (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {proof.map((p) => (
-        <li key={p.text} className="flex shrink-0 items-center">
+      {facts.map((f) => (
+        <li key={f.text} className="flex shrink-0 items-center">
           <span className="flex items-baseline gap-3 px-8 whitespace-nowrap md:px-12">
-            <span className="text-[clamp(1.75rem,1.2rem+2vw,3rem)] font-medium tracking-[-0.04em] text-ember">{p.figure}</span>
-            <span className="text-[clamp(1.05rem,0.9rem+0.6vw,1.5rem)] tracking-[-0.02em] text-bone">{p.text}</span>
-            <span className="t-meta text-mute">{p.project}</span>
+            <span className="text-[clamp(1.75rem,1.2rem+2vw,3rem)] font-medium tracking-[-0.04em] text-ember">{f.figure}</span>
+            <span className="text-[clamp(1.05rem,0.9rem+0.6vw,1.5rem)] tracking-[-0.02em] text-bone">{f.text}</span>
+            <span className="t-meta text-mute">{f.source}</span>
           </span>
           <Mark className="h-3.5 w-3.5 shrink-0 text-faint" />
         </li>

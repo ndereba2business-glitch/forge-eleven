@@ -5,13 +5,14 @@ import SelectedWork from '@/components/home/SelectedWork'
 import Statement from '@/components/home/Statement'
 import Services from '@/components/home/Services'
 import Process from '@/components/home/Process'
-import Studio from '@/components/home/Studio'
+import Team from '@/components/home/Team'
 import Contact from '@/components/home/Contact'
-import { projects } from '@/lib/projects'
-import { absoluteUrl, contact, site, socials, studio } from '@/lib/site'
+import { featuredProjects, projects } from '@/lib/projects'
+import { absoluteUrl, contact, site, socials } from '@/lib/site'
+import { founders } from '@/lib/team'
 
 export default function Home() {
-  const reel = projects.map((p) => ({
+  const reel = featuredProjects.map((p) => ({
     slug: p.slug,
     name: p.name,
     kind: p.kind,
@@ -29,13 +30,14 @@ export default function Home() {
     url: site.url,
     description: site.description,
     email: contact.email,
+    telephone: contact.phone.tel,
     image: absoluteUrl('/opengraph-image'),
     foundingDate: site.founded,
-    address: { '@type': 'PostalAddress', addressLocality: site.location.city, addressCountry: site.location.countryCode },
+    address: { '@type': 'PostalAddress', addressCountry: site.location.countryCode },
     areaServed: { '@type': 'Country', name: site.location.country },
-    knowsAbout: ['Web design', 'Web development', 'Web applications', 'E-commerce', 'Booking websites', 'UI/UX design'],
+    knowsAbout: ['Web design', 'Web development', 'Web applications', 'E-commerce', 'Business systems', 'Booking websites'],
     sameAs: socials.map((s) => s.url),
-    ...(studio.founder && { founder: { '@type': 'Person', name: studio.founder } }),
+    founder: founders.map((f) => ({ '@type': 'Person', name: f.name, jobTitle: f.role, url: f.portfolio.url })),
     subjectOf: projects.map((p) => ({ '@type': 'CreativeWork', name: p.name, url: absoluteUrl(`/work/${p.slug}`) })),
   }
 
@@ -49,7 +51,7 @@ export default function Home() {
       <Statement />
       <Services />
       <Process />
-      <Studio />
+      <Team />
       <Contact />
     </>
   )

@@ -1,37 +1,43 @@
 /**
- * Home page copy. Each service points at the work that proves it.
+ * Home page copy. Services and proof point at projects by slug, so the
+ * names shown always come from lib/projects.
  */
 
 export const services = [
   {
     title: 'Websites',
-    body: 'Business and marketing sites that load fast, read well on a phone and make the next step obvious: a booking, a call, a WhatsApp message.',
+    body: 'Business and marketing sites that load fast, read well on a phone and make the next step obvious.',
+    need: 'For when the first impression has to turn into a booking, a call or a WhatsApp message.',
     deliverables: ['Art direction', 'Responsive build', 'SEO & metadata', 'Content structure'],
-    proof: [
-      { label: 'The Black Perch', href: '/work/black-perch' },
-      { label: 'Arena Homes', href: '/work/arena-homes' },
-    ],
+    proof: ['black-perch', 'summertime-grooming'],
   },
   {
     title: 'Web applications',
-    body: 'Dashboards, marketplaces and multi-role products on a real database, with sign-in, permissions and the tests to back them.',
-    deliverables: ['Product & UX', 'Auth & roles', 'Database & security', 'Automated tests'],
-    proof: [{ label: 'Farmers Connect', href: '/work/farmers-connect' }],
+    body: 'Multi-role products on a real database, with sign-in, permissions, dashboards and the tests to back them.',
+    need: 'For when different people need different views of the same data, and it has to be right.',
+    deliverables: ['Product & UX', 'Accounts & roles', 'Database & security', 'Maps & data'],
+    proof: ['farmers-connect', 'cypher-green-systems'],
   },
   {
-    title: 'Commerce & booking',
-    body: 'Catalogues, carts, reservations and viewing requests, designed around how your customers actually buy, WhatsApp included.',
-    deliverables: ['Catalogue & cart', 'Booking flows', 'WhatsApp hand-off', 'Structured data'],
-    proof: [
-      { label: 'Lion Legacy', href: '/work/lion-legacy' },
-      { label: 'Arena Homes', href: '/work/arena-homes' },
-    ],
+    title: 'E-commerce & ordering',
+    body: 'Catalogues, carts, customer accounts and order tracking, built around how your customers actually buy.',
+    need: 'For when you want to sell or take orders online without losing the WhatsApp habit your customers already have.',
+    deliverables: ['Catalogue & search', 'Cart & checkout', 'Order tracking', 'WhatsApp hand-off'],
+    proof: ['frontpage-supermarket', 'lion-legacy'],
   },
   {
-    title: 'Interface & motion',
-    body: 'Interface design, small design systems and motion that explains rather than decorates, with smooth scrolling that still respects reduced motion.',
-    deliverables: ['UI design', 'Design systems', 'Interaction & motion', 'Accessibility'],
-    proof: [{ label: 'The Black Perch', href: '/work/black-perch' }],
+    title: 'Business systems',
+    body: 'The tools behind the counter: staff dashboards, menus and stock your team updates, order status and owner portals.',
+    need: 'For when the website and the day-to-day running of the business need to stay in step.',
+    deliverables: ['Staff dashboards', 'Admin portals', 'Access control', 'Operational data'],
+    proof: ['kingangi-hotel', 'frontpage-supermarket'],
+  },
+  {
+    title: 'Booking & reservations',
+    body: 'Rooms, tables and appointments: clear prices, visible availability and a booking that takes seconds.',
+    need: 'For when every enquiry currently costs you a conversation.',
+    deliverables: ['Booking flows', 'Availability', 'Pricing pages', 'Confirmation hand-off'],
+    proof: ['arena-homes', 'summertime-grooming'],
   },
 ]
 
@@ -66,7 +72,7 @@ export const process = [
 export const principles = [
   {
     title: 'Real content, never filler.',
-    body: 'If a price, a review or a number isn’t confirmed, it isn’t shown. Every concept here is labelled as one.',
+    body: 'If a price, a review or a number isn’t confirmed, it isn’t shown. Every concept on this site is labelled as one.',
   },
   {
     title: 'Phones first.',
@@ -74,7 +80,7 @@ export const principles = [
   },
   {
     title: 'Security is part of the build.',
-    body: 'Permissions live in the database and they’re tested, not left to hope and a hidden button.',
+    body: 'Who can see and change what is decided in the system itself and tested, not left to a hidden button.',
   },
   {
     title: 'AI-accelerated, human-decided.',
@@ -84,29 +90,20 @@ export const principles = [
 
 /**
  * Proof ticker: countable facts from the real projects, each traceable to
- * the project's source (migrations folder, catalogue, route list, etc.).
+ * the project itself (its live site, catalogue, routes or source).
  */
 export const proof = [
-  { figure: '4', text: 'user roles on one database', project: 'Farmers Connect' },
-  { figure: '16', text: 'versioned database migrations', project: 'Farmers Connect' },
-  { figure: '320px', text: 'to 1280px, covered by end-to-end tests', project: 'Farmers Connect' },
-  { figure: '6', text: 'room types, each with its own page', project: 'Arena Homes' },
-  { figure: '10', text: 'routes, each with its own title and link preview', project: 'Arena Homes' },
-  { figure: '22', text: 'products across 7 categories', project: 'Lion Legacy' },
-  { figure: '1', text: 'tap from cart to a WhatsApp order', project: 'Lion Legacy' },
-  { figure: '2', text: 'venues from one hospitality system', project: 'The Black Perch' },
+  { figure: '4', text: 'user roles on one database', project: 'farmers-connect' },
+  { figure: '8', text: 'roles, each with their own view of one map', project: 'cypher-green-systems' },
+  { figure: '177', text: 'products across 12 categories', project: 'frontpage-supermarket' },
+  { figure: '10', text: 'routes, each with its own title and link preview', project: 'arena-homes' },
+  { figure: '16', text: 'versioned database migrations', project: 'farmers-connect' },
+  { figure: '6', text: 'levels, from the whole Earth to a single site', project: 'cypher-green-systems' },
+  { figure: '2', text: 'branches on one ordering system', project: 'kingangi-hotel' },
+  { figure: '22', text: 'products, one tap from cart to WhatsApp', project: 'lion-legacy' },
+  { figure: '7', text: 'steps from choosing a service to a booking', project: 'summertime-grooming' },
+  { figure: '2', text: 'venues from one hospitality system', project: 'black-perch' },
 ]
 
 /** Only tools used in the projects on this site. */
-export const tools = [
-  'Next.js',
-  'React',
-  'TypeScript',
-  'Tailwind CSS',
-  'Supabase',
-  'PostgreSQL',
-  'GSAP',
-  'Vite',
-  'Playwright',
-  'Vercel',
-]
+export const tools = ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'PostGIS', 'GSAP', 'Playwright', 'Vercel']

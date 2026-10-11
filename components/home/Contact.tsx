@@ -1,10 +1,15 @@
 import Lines from '@/components/motion/Lines'
 import Arrow from '@/components/ui/Arrow'
 import ContactForm from '@/components/home/ContactForm'
-import { contact, site, socials, whatsappLink } from '@/lib/site'
+import { contact, site, whatsappLink } from '@/lib/site'
 
 export default function Contact() {
   const wa = whatsappLink()
+  const channels = [
+    ...(wa ? [{ label: 'WhatsApp', value: 'Message the studio', href: wa, external: true }] : []),
+    { label: 'Email', value: contact.email, href: `mailto:${contact.email}`, external: false },
+    { label: 'Call', value: contact.phone.display, href: `tel:${contact.phone.tel}`, external: false },
+  ]
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="section-y border-t border-line">
@@ -13,52 +18,35 @@ export default function Contact() {
           Contact
         </p>
         <h2 id="contact-title" className="t-display mt-6" data-reveal="lines">
-          <Lines lines={['Have something', <>worth building<span className="text-ember">?</span></>]} />
+          <Lines lines={['Have a project', <>in mind<span className="text-ember">?</span></>]} />
         </h2>
       </div>
 
       <div className="container-x mt-[clamp(3rem,7vw,6rem)] grid gap-16 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-4">
           <p className="t-lead max-w-[30ch] text-mute" data-reveal>
-            A new site, a rebuild, or a product idea that needs shaping. Tell me what you’re working on. Every message is read and
-            answered personally.
+            Tell us what you’re building. A new site, a rebuild, or a system your business needs. One of us will reply personally.
           </p>
 
           <ul className="mt-10 border-t border-line" data-reveal>
-            <li className="border-b border-line">
-              <a href={`mailto:${contact.email}`} className="group flex items-center justify-between gap-4 py-5">
-                <span>
-                  <span className="t-meta block text-mute">Email</span>
-                  <span className="mt-1 block break-all">{contact.email}</span>
-                </span>
-                <Arrow direction="up-right" className="text-ember transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </li>
-            {wa && (
-              <li className="border-b border-line">
-                <a href={wa} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-5">
+            {channels.map((c) => (
+              <li key={c.label} className="border-b border-line">
+                <a
+                  href={c.href}
+                  {...(c.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  className="group flex items-center justify-between gap-4 py-5"
+                >
                   <span>
-                    <span className="t-meta block text-mute">WhatsApp</span>
-                    <span className="mt-1 block">Message directly</span>
+                    <span className="t-meta block text-mute">{c.label}</span>
+                    <span className="mt-1 block break-all">{c.value}</span>
                   </span>
-                  <Arrow direction="up-right" className="text-ember" />
-                </a>
-              </li>
-            )}
-            {socials.map((s) => (
-              <li key={s.url} className="border-b border-line">
-                <a href={s.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-5">
-                  <span>
-                    <span className="t-meta block text-mute">{s.label}</span>
-                    <span className="mt-1 block">See the source</span>
-                  </span>
-                  <Arrow direction="up-right" className="text-ember" />
+                  <Arrow direction="up-right" className="text-ember transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
               </li>
             ))}
           </ul>
           <p className="t-meta mt-6 text-mute" data-reveal>
-            Based in {site.location.city}, {site.location.country}
+            Based in {site.location.country}
           </p>
         </div>
 

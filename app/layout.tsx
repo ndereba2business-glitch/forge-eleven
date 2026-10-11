@@ -7,6 +7,7 @@ import SmoothScroll from '@/components/layout/SmoothScroll'
 import RevealObserver from '@/components/motion/RevealObserver'
 import Cursor from '@/components/ui/Cursor'
 import { site } from '@/lib/site'
+import { founders } from '@/lib/team'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' })
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: { default: site.title, template: '%s — Forge Eleven' },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.name, url: site.url }],
+  authors: founders.map((f) => ({ name: f.name, url: f.portfolio.url })),
   creator: site.name,
   alternates: { canonical: '/' },
   openGraph: {

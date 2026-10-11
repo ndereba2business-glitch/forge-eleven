@@ -40,7 +40,7 @@ export default function ContactForm() {
       <div role="status" className="border border-line p-8 md:p-10">
         <p className="t-meta text-ember">Message sent</p>
         <p className="t-h3 mt-5">Thank you. It’s on its way.</p>
-        <p className="mt-4 text-mute">You’ll get a personal reply at the email you gave. Nothing automated.</p>
+        <p className="mt-4 text-mute">One of us will reply personally at the email you gave. Nothing automated.</p>
         <button type="button" onClick={() => setStatus('idle')} className="link-draw mt-8 text-sm">
           Send another message
         </button>
@@ -81,7 +81,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="cf-message" className="t-meta text-mute">
-          Tell me about it
+          Tell us about it
         </label>
         <textarea
           id="cf-message"

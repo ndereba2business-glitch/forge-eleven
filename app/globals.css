@@ -419,11 +419,27 @@ html.has-cursor * {
     transform: translate3d(-50%, 0, 0);
   }
 }
+/* Reduced motion: a static, wrapping list instead of a moving band. */
 @media (prefers-reduced-motion: reduce) {
   .ticker {
     animation: none;
+    display: block;
     width: auto;
-    overflow-x: auto;
+  }
+  .ticker > ul {
+    flex-wrap: wrap;
+    row-gap: 1.25rem;
+  }
+  .ticker > ul[aria-hidden] {
+    display: none;
+  }
+  .ticker li > span {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  /* The edge fades only make sense while the band is moving. */
+  .ticker ~ div {
+    display: none;
   }
 }
 

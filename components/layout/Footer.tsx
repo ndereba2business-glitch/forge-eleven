@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Arrow from '@/components/ui/Arrow'
 import { contact, site, socials, whatsappLink } from '@/lib/site'
 import { NAV } from '@/lib/nav'
+import { founders } from '@/lib/team'
 import FooterCta from '@/components/layout/FooterCta'
 
 export default function Footer() {
@@ -41,6 +42,11 @@ export default function Footer() {
                 </a>
               </li>
             )}
+            <li>
+              <a href={`tel:${contact.phone.tel}`} className="link-draw py-1 text-bone">
+                {contact.phone.display}
+              </a>
+            </li>
             {socials.map((s) => (
               <li key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex items-center gap-1.5 py-1 text-bone">
@@ -48,9 +54,7 @@ export default function Footer() {
                 </a>
               </li>
             ))}
-            <li className="pt-2 text-mute">
-              {site.location.city}, {site.location.country}
-            </li>
+            <li className="pt-2 text-mute">{site.location.country}</li>
           </ul>
         </div>
       </div>
@@ -76,7 +80,7 @@ export default function Footer() {
 
       <div className="container-x flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 t-meta text-mute">
         <span>© {new Date().getFullYear()} Forge Eleven</span>
-        <span>Designed &amp; built in-house</span>
+        <span>Founded by {founders.map((f) => f.name).join(' & ')}</span>
       </div>
     </footer>
   )

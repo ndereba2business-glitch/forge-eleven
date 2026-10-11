@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProject, nextProject, projects } from '@/lib/projects'
+import { getProject, nextProject, projectLinks, projectNumber, projects } from '@/lib/projects'
+import { creditFor, founders } from '@/lib/team'
 import { absoluteUrl, site } from '@/lib/site'
 import CaseStudyBlocks from '@/components/work/CaseStudyBlocks'
 import StatusTag from '@/components/work/StatusTag'
@@ -40,7 +41,9 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
   const project = getProject((await params).slug)
   if (!project) notFound()
   const next = nextProject(project.slug)
-  const number = String(projects.indexOf(project) + 1).padStart(2, '0')
+  const number = projectNumber(project.slug)
+  const links = projectLinks(project)
+  const lead = founders.find((f) => f.id === project.owner)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -52,9 +55,10 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
     image: absoluteUrl(project.cover.image.src),
     dateCreated: project.year,
     genre: project.kind,
-    keywords: project.stack.join(', '),
+    keywords: project.technologies.join(', '),
     creator: { '@type': 'Organization', name: site.name, url: site.url },
-    sameAs: project.links.map((l) => l.url),
+    ...(lead && { author: { '@type': 'Person', name: lead.name, url: lead.portfolio.url } }),
+    sameAs: links.map((l) => l.url),
   }
 
   return (
@@ -68,6 +72,8 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-bone">{number}</span>
+          <span aria-hidden="true">·</span>
+          <span>{project.year}</span>
         </nav>
 
         <h1 className="t-h1 mt-8 max-w-[14ch]">
@@ -94,9 +100,9 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
               </dd>
             </div>
             <div>
-              <dt className="t-meta text-mute">Role</dt>
+              <dt className="t-meta text-mute">Services</dt>
               <dd className="mt-2 text-mute">
-                {project.role.map((r) => (
+                {project.services.map((r) => (
                   <span key={r} className="block text-bone">
                     {r}
                   </span>
@@ -104,8 +110,13 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
               </dd>
             </div>
             <div>
-              <dt className="t-meta text-mute">Year</dt>
-              <dd className="mt-2">{project.year}</dd>
+              <dt className="t-meta text-mute">Led by</dt>
+              <dd className="mt-2">
+                <Link href="/#studio" className="link-draw">
+                  {creditFor(project.owner)}
+                </Link>
+                {lead && <span className="block text-mute">Forge Eleven</span>}
+              </dd>
             </div>
             <div className="col-span-2 border-t border-line pt-5">
               <dt className="sr-only">About this project</dt>
@@ -115,7 +126,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
         </div>
 
         <div className="hero-fade mt-10 flex flex-wrap gap-3" style={{ '--delay': '650ms' } as React.CSSProperties}>
-          {project.links.map((link, i) => (
+          {links.map((link, i) => (
             <a
               key={link.url}
               href={link.url}
@@ -154,7 +165,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
       <section className="container-x mt-[clamp(5rem,10vw,9rem)] grid gap-6 border-t border-line pt-10 md:grid-cols-12">
         <h2 className="t-meta text-mute md:col-span-3">Built with</h2>
         <ul className="flex flex-wrap gap-2 md:col-span-8 md:col-start-5">
-          {project.stack.map((tech) => (
+          {project.technologies.map((tech) => (
             <li key={tech} className="border border-line px-3 py-1.5 text-sm text-mute">
               {tech}
             </li>

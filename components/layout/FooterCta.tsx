@@ -8,10 +8,10 @@ import Arrow from '@/components/ui/Arrow'
 export default function FooterCta() {
   const pathname = usePathname()
   if (pathname === '/')
-    return <p className="t-h3 max-w-[18ch] text-mute">Websites and web products, designed and built in Kenya.</p>
+    return <p className="t-h3 max-w-[20ch] text-mute">Websites, web apps and business systems, designed and built in Kenya.</p>
   return (
     <>
-      <p className="t-h3 max-w-[16ch]">Have something worth building?</p>
+      <p className="t-h3 max-w-[16ch]">Have a project in mind? Let’s build it.</p>
       <Link href="/#contact" className="btn btn-primary mt-8" data-magnetic>
         Start a project <Arrow />
       </Link>

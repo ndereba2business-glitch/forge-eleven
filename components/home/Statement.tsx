@@ -18,9 +18,11 @@ export default function Statement() {
     () => {
       const mm = gsap.matchMedia()
       mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Unlit words stay above 3:1 contrast (large text), so the line is
+        // readable at every scroll position, not just once it has lit up.
         gsap.fromTo(
           '[data-word]',
-          { opacity: 0.14 },
+          { opacity: (_i: number, el: HTMLElement) => (el.dataset.accent ? 0.78 : 0.42) },
           {
             opacity: 1,
             ease: 'none',
@@ -40,7 +42,7 @@ export default function Statement() {
           const accent = word.startsWith('*')
           const clean = word.replace(/\*/g, '')
           return (
-            <span key={i} data-word className={accent ? 'text-ember' : undefined}>
+            <span key={i} data-word data-accent={accent || undefined} className={accent ? 'text-ember' : undefined}>
               {clean}{' '}
             </span>
           )
